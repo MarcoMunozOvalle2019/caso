@@ -5,7 +5,6 @@ class BiceMain extends Component {
     constructor(props) {
       super(props);
       this.state = {
-            name:'',
             };
     }
   
@@ -73,6 +72,7 @@ class BiceMain extends Component {
 
             </div>
 
+            <img src={require('../assets/1.gif')} alt="loading..." width="180" height="180" />
 
             <div className="card text-white bg-primary mb-3" >
             <div className="card-body">

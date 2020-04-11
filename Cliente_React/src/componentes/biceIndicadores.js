@@ -1,52 +1,71 @@
 
-import React,{Component} from 'react';
+import React,{Component } from 'react';
 import Client from '../consulta';
 import '../../src/App.css'
+var _ = require('lodash');
+
 
 class BiceIndicadores extends Component{
     constructor(props){
        super(props);
         this.state={
-            name:'',
+            data:'',
         }
         this.handleInputChange= this.handleInputChange.bind(this);
     };  
+    
+    coneccion = (exito) => {
+        if (exito === undefined ) alert(' data no recibida')
+    };
+
     handleInputChange(e) {
         e.preventDefault();
         const {value} = e.target;
-        const esto=' {"json": { "pide":"' +value+ '", "tipo":"0" } } '
-        Client.search(esto, respuesta => {
+        const json=' {"json": { "pide":"' +value+ '", "tipo":"0" } } '
+
+        let exito
+        setTimeout(() =>(
+            this.coneccion(exito)
+        ),2000);
+
+        Client.search(json, respuesta => {
+            exito = respuesta
             this.setState({
-                name: respuesta
+                data: respuesta
               });
         });      
-      }
-    render(){
-        let muestra= this.state.name;
-        let myobj = eval( muestra );
-        let thisOne = {key:'', name:'', unit:'', date:'', value:''}
-        if (myobj) thisOne = myobj[0]
-  
-         return(
 
-            <div className="card text-center border-info">
-    
-                        <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
-                                <ul className="navbar-nav">
-                                    <li className="nav-item">
-                                    <a className="nav-link" href="/">menu1</a>
-                                    </li>
-                                    <li className="nav-item">
-                                    <a className="nav-link" href="/">menu2</a>
-                                    </li>
-                                </ul>
-                        </nav>
-    
-                        <div className="col-sm-8">
+      }
+
+    render(){
+        let parsea
+        const data = this.state.data;
+        if(data) parsea = JSON.parse(data)
+        const myobj = _.map( parsea, ((item)=>{
+            return item;
+         }))
+
+        let thisOne = {}
+        if (myobj.length>0) thisOne = myobj[0]
+
+        return(
+
+                <div className="card text-center border-info">
+                    <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
+                        <ul className="navbar-nav">
+                            <li className="nav-item">
+                            <a className="nav-link" href="/">menu1</a>
+                            </li>
+                            <li className="nav-item">
+                            <a className="nav-link" href="/">menu2</a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div className="row">
+                        <div className="col-md-6">
                           <div className="card">
                             <div className="card-body">
-                              <h5 className="card-title">INDICADORES DEL DIA</h5>
-    
                                     <select
                                         name="priority"
                                         className="form-control"
@@ -67,24 +86,27 @@ class BiceIndicadores extends Component{
                                     </select>
                                     <p className="card-text"> </p>
 
-                                    <div className="card-body" className="col-sm-2">
-                                            <button className="btn btn-primary">{thisOne.name}</button>
-                                            <span className="badge badge-pill badge-dander ml-12">Unidad</span>
-                                            <button className="btn btn-primary">{thisOne.unit}</button>
-                                            <span className="badge badge-pill badge-dander ml-12">fecha</span>
-                                            <button className="btn btn-primary">{thisOne.date}</button>
-                                            <span className="badge badge-pill badge-dander ml-12">valor</span>
-                                            <button className="btn btn-primary">{thisOne.value}</button>
+                                    <div className="card" >
+                                        <h5 className="card-title">nombre</h5>
+                                        <button className="btn btn-primary">{thisOne.name}</button>
+                                        <h5 className="card-title">unidad</h5>
+                                        <button className="btn btn-primary">{thisOne.unit}</button>
+                                        <h5 className="card-title">data</h5>
+                                        <button className="btn btn-primary">{thisOne.date}</button>
+                                        <h5 className="card-title">valor</h5>
+                                        <button className="btn btn-primary">{thisOne.value}</button>
                                     </div>
+                                </div>
                             </div>
-                          </div>
-                        </div>
-    
-                        <div className="card text-white bg-primary mb-12" >
-                            <form action="/" method="get" >
-                                <button className="btn btn-primary"type="submit">Volver</button>
-                            </form>                
-                        </div>         
+                        </div>    
+                        <img src={require('../assets/2.gif')} alt="loading..." width="360" height="360" />
+                    </div>
+
+                <div className="card text-white bg-primary mb-12" >
+                    <form action="/" method="get" >
+                        <button className="btn btn-primary"type="submit">Volver</button>
+                    </form>                
+                </div>         
             </div>   
     
           );

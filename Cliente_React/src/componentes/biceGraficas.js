@@ -17,10 +17,10 @@ class BiceGraficas extends Component{
      handleInputChange(e) {
          e.preventDefault();
          const {value} = e.target;
-         const esto=' {"json": { "pide":"' +value+ '", "tipo":"1" } } '
-         Client.search(esto, respuesta => {
+         const json=' {"json": { "pide":"' +value+ '", "tipo":"1" } } '
+         Client.search(json, respuesta => {
              this.setState({
-                 name: respuesta
+                 data: respuesta
                });
          });      
        }
@@ -31,7 +31,7 @@ class BiceGraficas extends Component{
             labels: [],
             datasets: [
               {
-                label: 'ESTADOS',
+                label: 'BICE ESTADOS',
                 fill: false,
                 lineTension: 0.5,
                 backgroundColor: 'rgba(175,192,192,1)',
@@ -43,16 +43,16 @@ class BiceGraficas extends Component{
           }
         state.datasets[0].data.push(4)
         let parsea
-        let muestra = this.state.name;
-        if(muestra) parsea = JSON.parse(muestra)
-        const que = _.map( parsea, (function(item){
+        let data = this.state.data;
+        if(data) parsea = JSON.parse(data)
+        const info = _.map( parsea, ((item)=>{
             return item;
          }))
 
         let counter=1
         let arreglo1=[]
         let arreglo2=[]
-        _.forEach(que[3], function(n, key) {
+        _.forEach(info[3], (n, key)=> {
             arreglo1.push(n)
             arreglo2.push(counter)
             counter++
@@ -62,29 +62,27 @@ class BiceGraficas extends Component{
         state.labels = arreglo1
 
          return(
-             
              <div>
 
                         <div className="col-sm-6">
-                            <div className="card">
+                          <div className="card">
                             <div className="card-body">
-
-                                <Line
-                                    data={state}
-                                    options={{
-                                        title:{
-                                        display:true,
-                                        text:'Grafica mensual',
-                                        fontSize:40
-                                        },
-                                        legend:{
-                                        display:true,
-                                        position:'right'
-                                        }
-                                    }}
-                                    />
-                               </div>
-                            </div>
+                            <Line
+                                data={state}
+                                options={{
+                                    title:{
+                                    display:true,
+                                    text:'Grafica mensual',
+                                    fontSize:40
+                                    },
+                                    legend:{
+                                    display:true,
+                                    position:'right'
+                                    }
+                                }}
+                                />
+                             </div>
+                          </div>
                         </div>
 
 
@@ -101,17 +99,19 @@ class BiceGraficas extends Component{
                                     <option>cobre</option>
                                     <option>dolar</option>
                                 </select>
+                                
                                 <p className="card-text"> </p>
 
-                                <div className="card-body" className="col-sm-2">
+                                <div className="card" >
+                                  <h5 className="card-title">datos</h5>
                                     <div className="card">
-                                    <button className="btn btn-primary">{que[0]}</button>
+                                    <button className="btn btn-primary">{info[0]}</button>
                                     </div>
                                     <div className="card">
-                                    <button className="btn btn-primary">{que[1]}</button>
+                                    <button className="btn btn-primary">{info[1]}</button>
                                     </div>
                                     <div className="card">
-                                    <button className="btn btn-primary">{que[2]}</button>
+                                    <button className="btn btn-primary">{info[2]}</button>
                                     </div>
                                 </div>
                              </div>

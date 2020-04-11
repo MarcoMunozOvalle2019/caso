@@ -2,7 +2,7 @@
 
 1.Presionar boton verde Clone or download
 
-2.Download Zip
+2.Download Zip ( ...esperar)
 
 3.Crear carpeta nombre caso en escritorio
 

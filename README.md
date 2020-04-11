@@ -38,6 +38,7 @@ Levanta cliente ReactJs (port:80):
 15. automaticamnete se levantara Chrome con el front-and react
 
 16. listo jugar un rato
+_______________________________________________________________
 
 PD : se dejaron 3 pruebas unitarias JEST en el servidor .
 

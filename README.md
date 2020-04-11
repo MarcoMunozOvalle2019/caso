@@ -40,8 +40,15 @@ Levanta cliente ReactJs (port:80):
 16. listo jugar un rato
 _______________________________________________________________
 
-PD : se dejaron 3 pruebas unitarias JEST en el servidor .
+Para la ejecucion del test:
 
+17. cd Servidor_Express
+
+18. npm run test ( ver resultados en carpeta)
+
+_______________________________________________________________
+
+PD : se dejaron 3 pruebas unitarias JEST en el servidor .
 
 https://github.com/MarcoMunozOvalle2019/caso.git
 

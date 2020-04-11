@@ -48,7 +48,8 @@ Para la ejecucion del test:
 
 _______________________________________________________________
 
-PD : se dejaron 3 pruebas unitarias JEST en el servidor .
+PD : se dejaron 3 pruebas unitarias JEST en el servidor . Se usaron Librerias axios y loadash
+ademas se uso Facade pattern. em6.
 
 https://github.com/MarcoMunozOvalle2019/caso.git
 

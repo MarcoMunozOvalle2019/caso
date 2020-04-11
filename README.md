@@ -13,12 +13,17 @@ Levantar servidor express nodeJs (port:81):
 10.npm run start
 
 Levanta cliente ReactJs (port:80):
+
 11.En visual studio code se abre otro terminal con +
+
 12.cd caso-master
+
 13.cd Cliente_React
+
 14.npm run start
 
 15. se levantara Chrome con el front-and react
+
 16. listo jugar un rato
 
 

@@ -44,7 +44,7 @@ Para la ejecucion del test:
 
 17. cd Servidor_Express
 
-18. npm run test ( ver resultados en carpeta)
+18. npm run test ( ver resultados en archivo test servidor Jest.jpg)
 
 _______________________________________________________________
 

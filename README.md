@@ -35,7 +35,7 @@ Levanta cliente ReactJs (port:80):
 
 14. npm run start
 
-15. se levantara Chrome con el front-and react
+15. automaticamnete se levantara Chrome con el front-and react
 
 16. listo jugar un rato
 

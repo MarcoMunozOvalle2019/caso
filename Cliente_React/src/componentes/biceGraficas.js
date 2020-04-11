@@ -98,6 +98,15 @@ class BiceGraficas extends Component{
                                     <option>SELECCIONE AQUI PARA DESPLEGAR GRAFICA</option>
                                     <option>cobre</option>
                                     <option>dolar</option>
+                                    <option>euro</option>
+                                    <option>ipc</option>
+                                    <option>ivp</option>
+                                    <option>oro</option>
+                                    <option>plata</option>
+                                    <option>uf</option>
+                                    <option>utm</option>
+                                    <option>yen</option>      
+
                                 </select>
                                 
                                 <p className="card-text"> </p>

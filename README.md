@@ -12,7 +12,7 @@
 
 6.Con Visual Studio Code abierto se arrastra la carpeta caso adentro.
 
-7.En Visual studio code se abre un terminal ctrl ñ
+7.En Visual studio code se abre un terminal ctrl+ñ
 
 8.en la terminal escribir: cd caso-master (se visulizara carpetas Servidor_Express y Cliente_React)
 

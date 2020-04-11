@@ -12,11 +12,12 @@ class EjecutarService{
             if(tipo=='1') return thisOne
         })
         .catch(function (error) {
-            console.log(error);
+            return error.hostname
         })
         .finally(function () {
         });
         return salida
+        
     }
 }
 module.exports = EjecutarService;

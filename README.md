@@ -14,7 +14,7 @@
 
 7.En Visual studio code se abre un terminal ctrl+ñ (o en pestaña ver de visual studio code y terminal integrado) 
 
-8.en la terminal escribir: cd caso-master (se visulizara carpetas Servidor_Express y Cliente_React)
+8.en la terminal escribir: cd caso-master (se visulizara carpetas Servidor_Express y Cliente_React con comando dir)
 
 _______________________________________________________________
 Levantar servidor express nodeJs (port:81):

@@ -16,13 +16,14 @@
 
 8.en la terminal escribir: cd caso-master (se visulizara carpetas Servidor_Express y Cliente_React)
 
-
+_______________________________________________________________
 Levantar servidor express nodeJs (port:81):
 
 9.cd Servidor_Express
 
 10.npm run start
 
+_______________________________________________________________
 
 Levanta cliente ReactJs (port:80):
 

@@ -39,6 +39,8 @@ Levanta cliente ReactJs (port:80):
 
 16. listo jugar un rato
 
+PD : se dejaron 3 pruebas unitarias JEST en el servidor .
+
 
 https://github.com/MarcoMunozOvalle2019/caso.git
 

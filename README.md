@@ -6,7 +6,7 @@
 
 3.Crear carpeta nombre caso en escritorio
 
-4.Unzipdentro de carpeta caso el archivo: caso-master.zip
+4.Unzip dentro de carpeta caso el archivo: caso-master.zip ( ...esperar)
 
 5.Se creara adentro una carpeta llamada caso-master con subcarpetas Servidor_Express y Cliente_React (ambas con Node_Modules incluidos )
 

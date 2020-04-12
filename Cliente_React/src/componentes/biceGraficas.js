@@ -79,7 +79,6 @@ class BiceGraficas extends Component{
                     counter++
                 });        
                 this.setState({
-                    grafica: state,
                     valores:this.state.data
                    });
             }
@@ -91,7 +90,6 @@ class BiceGraficas extends Component{
                     arreglo1.push(i);arreglo1.push(2);
                 }
                 this.setState({
-                    grafica: state,
                     valores:{"key":"","name":"","unit":""}
                    });       
             }

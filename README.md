@@ -21,7 +21,7 @@ Levantar servidor express nodeJs (port:81):
 
 9. cd Servidor_Express
 
-10. npm run start ( aparecera leyenda "...server bice listening" en terminal)
+10. npm run start or npm run dev( aparecera leyenda "...server bice listening" en terminal)
 
 _______________________________________________________________
 

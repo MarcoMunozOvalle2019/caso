@@ -51,6 +51,20 @@ _______________________________________________________________
 PD : se dejaron 3 pruebas unitarias JEST en el servidor . Se usaron Librerias axios y loadash
 ademas se uso Facade pattern. em6.
 
+PD: por necesidades mandatorias no se incluyo cicles de vide de un componente React:
+
+componentWillMount(): Se ejecuta antes de que el componente sea montado en el DOM.
+
+componentDidMount(): Se ejecuta justo después de que el componente haya sido montado en el DOM.
+
+componentDidUpdate(): Es invocado inmediatamente después de que el componente se haya actualizado.
+
+componentWillUnmount(): Este metodo se ejecuta justo antes de que el componente sea destruido o eliminado del DOM.
+
+ni JWT autenticacion ni swagger ni Redux.
+
+Agradecimientos
+
 https://github.com/MarcoMunozOvalle2019/caso.git
 
 

@@ -35,7 +35,7 @@ Levanta cliente ReactJs (port:80):
 
 14. npm run start
 
-15. automaticamnete se levantara Chrome con el front-and react
+15. automaticamnete se levantara Chrome con el front-and reactc(...la 1era vez demora pues React levanta su propio servidor)
 
 16. listo jugar un rato
 _______________________________________________________________
@@ -49,7 +49,7 @@ Para la ejecucion del test:
 _______________________________________________________________
 
 PD : se dejaron 3 pruebas unitarias JEST en el servidor . Se usaron Librerias axios y loadash
-ademas se uso Facade pattern. em6.
+ademas se uso Facade pattern. em6. 
 
 PD: por necesidades mandatorias no se incluyo todos los cicles de vida de un componente React:
 

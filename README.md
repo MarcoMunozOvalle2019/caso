@@ -1,4 +1,4 @@
-# caso BICE
+# caso BICE instrucciones:
 
 1. Presionar boton verde Clone or download
 

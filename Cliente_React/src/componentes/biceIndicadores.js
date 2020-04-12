@@ -9,44 +9,48 @@ class BiceIndicadores extends Component{
     constructor(props){
        super(props);
         this.state={
-            data:'',
+            info:[],
+            combo:[],
+            valores:{}
         }
         this.handleInputChange= this.handleInputChange.bind(this);
     };  
     
-    coneccion = (exito) => {
-        if (exito === undefined ) alert(' data no recibida')
-    };
+    getData(){
+        Client.search( respuesta => {
+            this.setState({
+                info: respuesta.apis
+              });
+             const data=respuesta.apis[0].example.response
+             let arreglo=[]
+             _.map( data, ((item)=>{
+                arreglo.push({name:item.key})
+                return arreglo;
+             }))
+             this.setState({combo: arreglo});
+        });      
+      }
+    
+    componentDidMount(){
+       this.getData();
+    }     
 
     handleInputChange(e) {
         e.preventDefault();
         const {value} = e.target;
-        const json=' {"json": { "pide":"' +value+ '", "tipo":"0" } } '
-
-        let exito
-        setTimeout(() =>(
-            this.coneccion(exito)
-        ),2000);
-
-        Client.search(json, respuesta => {
-            exito = respuesta
-            this.setState({
-                data: respuesta
-              });
-        });      
-
+        const data = this.state.info[0].example.response
+        const valores = _.filter(data, { 'key': value });
+        this.setState({valores});
       }
 
     render(){
-        let parsea
-        const data = this.state.data;
-        if(data) parsea = JSON.parse(data)
-        const myobj = _.map( parsea, ((item)=>{
-            return item;
-         }))
-
         let thisOne = {}
-        if (myobj.length>0) thisOne = myobj[0]
+        if  (this.state.valores.length > 0 ) thisOne = this.state.valores[0]
+
+        let combo = this.state.combo;
+        let optionItems = combo.map((combo) =>
+                <option key={combo.name}>{combo.name}</option>
+            );
 
         return(
 
@@ -66,24 +70,14 @@ class BiceIndicadores extends Component{
                         <div className="col-md-6">
                           <div className="card">
                             <div className="card-body">
-                                    <select
-                                        name="priority"
-                                        className="form-control"
-                                        value={this.state.priority}
-                                        onChange={this.handleInputChange}
-                                    >
-                                        <option>SELECCIONE AQUI PARA DESPLEGAR VALORES</option>
-                                        <option>cobre</option>
-                                        <option>dolar</option>
-                                        <option>euro</option>
-                                        <option>ipc</option>
-                                        <option>ivp</option>
-                                        <option>oro</option>
-                                        <option>plata</option>
-                                        <option>uf</option>
-                                        <option>utm</option>
-                                        <option>yen</option>      
-                                    </select>
+
+                                    <select name="priority"
+                                            className="form-control"
+                                            value={this.state.priority}
+                                            onChange={this.handleInputChange}>
+                                            {optionItems}
+                                    </select>                
+
                                     <p className="card-text"> </p>
 
                                     <div className="card" >

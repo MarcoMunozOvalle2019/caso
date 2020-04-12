@@ -102,7 +102,7 @@ class BiceGraficas extends Component{
 
         // binding combo
         let optionItems = this.state.combo.map((combo) =>
-                <option key={combo.name}>{combo.name}</option>
+            <option key={combo.name}>{combo.name}</option>
          );        
 
          return(
@@ -134,10 +134,10 @@ class BiceGraficas extends Component{
                     <div className="card">
                     <div className="card-body">
                         <select name="priority"
-                                    className="form-control"
-                                    value={this.state.priority}
-                                    onChange={this.handleInputChange}>
-                                    {optionItems}
+                            className="form-control"
+                            value={this.state.priority}
+                            onChange={this.handleInputChange}>
+                            {optionItems}
                         </select>                
 
                         <p className="card-text"> </p>

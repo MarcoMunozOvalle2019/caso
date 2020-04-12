@@ -1,5 +1,7 @@
 const ejecutarService = require('../../components/consultas/consultas.service');
 
+/*  ejecuta el bice Facade, logica de Negocio aqui*/
+
 class EjecutarFacade{
     static async executeTransfer(req){
     let data
@@ -13,4 +15,5 @@ class EjecutarFacade{
     return data
     }
 }
+
 module.exports = EjecutarFacade;

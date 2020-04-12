@@ -1,5 +1,7 @@
 const axios = require('axios');
 
+/*  ejecuta el bice servicio api externa*/
+
 class EjecutarService{
 
     static async executeTransfer(req){

@@ -18,10 +18,27 @@ class BiceGraficas extends Component{
          this.handleInputChange= this.handleInputChange.bind(this);
      };  
 
-     getData(){
+    setGraphics(arr1,arr2){
+        let state = {
+        labels: arr1,
+        datasets: [
+            {
+            label: 'BICE ESTADOS',
+            fill: false,
+            lineTension: 0.5,
+            backgroundColor: 'rgba(175,192,192,1)',
+            borderColor: 'rgba(255,2,255,1)',
+            borderWidth: 2,
+            data: arr2
+            }
+        ]
+        }
+        this.setState({grafica: state});         
+      }
+
+    getData(){
         // Obtiene data de api
         Client.search( respuesta => {
-
              const thisOne = respuesta.apis[1].example.response
 
              // prepara items combo
@@ -37,85 +54,53 @@ class BiceGraficas extends Component{
                 info: respuesta.apis
               });
 
-             // prepara grafica inicial
-             let state = {
-                labels: [],
-                datasets: [
-                  {
-                    label: 'BICE ESTADOS',
-                    fill: false,
-                    lineTension: 0.5,
-                    backgroundColor: 'rgba(175,192,192,1)',
-                    borderColor: 'rgba(255,2,255,1)',
-                    borderWidth: 2,
-                    data: []
-                  }
-                ]
-              }
-              this.setState({grafica: state});
+             this.setGraphics([],[])
        });      
-      }
-    
+    }
 
-    componentDidMount(){
-       // mount data
-       this.getData();
-    }     
+    comboOptions(value){
+        let counter=1
+        let arreglo1=[]
+        let arreglo2=[]
+        
+        // grafica opcion cobre que tiene data
+        if (this.state.data.key===value){
+            _.forEach(this.state.data.values, (n, key)=> {
+                arreglo1.push(n)
+                arreglo2.push(counter)
+                counter++
+            });        
+            this.setState({
+                valores:this.state.data
+                });
+          }
 
+        // reset grafica opciones sin data
+        if (value==='nada1'||value==='nada2')
+          {
+              for(let i=0;i<301;i++){
+                  arreglo1.push(i);arreglo1.push(2);
+              }
+              this.setState({
+                  valores:{"key":"","name":"","unit":""}
+                 });       
+          }
+        this.setGraphics( arreglo2, arreglo1)
+    }
 
     handleInputChange(e) {
          e.preventDefault();
          const {value} = e.target;
-
-         let counter=1
-         let arreglo1=[]
-         let arreglo2=[]
-
-         // si seleccion combo corresponde carga arreglos con data
-         if (this.state.data.key===value){
-                _.forEach(this.state.data.values, (n, key)=> {
-                    arreglo1.push(n)
-                    arreglo2.push(counter)
-                    counter++
-                });        
-                this.setState({
-                    valores:this.state.data
-                   });
-            }
-
-         // si seleccion combo otro opcion reset arreglos con data
-         if (value==='nada1'||value==='nada2')
-            {
-                for(let i=0;i<301;i++){
-                    arreglo1.push(i);arreglo1.push(2);
-                }
-                this.setState({
-                    valores:{"key":"","name":"","unit":""}
-                   });       
-            }
-
-         // prepara grafica   
-         let state = {
-            labels: arreglo2,
-            datasets: [
-            {
-                label: 'BICE ESTADOS',
-                fill: false,
-                lineTension: 0.5,
-                backgroundColor: 'rgba(175,192,192,1)',
-                borderColor: 'rgba(255,2,255,1)',
-                borderWidth: 2,
-                data: arreglo1
-            }
-            ]
-         }
-         this.setState({grafica: state});
+         this.comboOptions(value)
        }
 
+    componentDidMount(){
+       this.getData();
+    }     
        
     render(){
 
-        // poblar combo
+        // binding combo
         let optionItems = this.state.combo.map((combo) =>
                 <option key={combo.name}>{combo.name}</option>
          );        
@@ -123,60 +108,60 @@ class BiceGraficas extends Component{
          return(
              
              <div>
-                        <div className="col-sm-6">
-                          <div className="card">
-                            <div className="card-body">
-                            <Line
-                                data={this.state.grafica}
-                                options={{
-                                    title:{
-                                    display:true,
-                                    text:'Grafica mensual',
-                                    fontSize:40
-                                    },
-                                    legend:{
-                                    display:true,
-                                    position:'right'
-                                    }
-                                }}
-                                />
-                             </div>
-                          </div>
+                <div className="col-sm-6">
+                    <div className="card">
+                    <div className="card-body">
+                    <Line
+                        data={this.state.grafica}
+                        options={{
+                            title:{
+                            display:true,
+                            text:'Grafica mensual',
+                            fontSize:40
+                            },
+                            legend:{
+                            display:true,
+                            position:'right'
+                            }
+                        }}
+                        />
                         </div>
+                    </div>
+                </div>
 
 
-                        <div className="col-sm-8">
-                          <div className="card">
-                            <div className="card-body">
-                                <select name="priority"
-                                            className="form-control"
-                                            value={this.state.priority}
-                                            onChange={this.handleInputChange}>
-                                            {optionItems}
-                                </select>                
+                <div className="col-sm-8">
+                    <div className="card">
+                    <div className="card-body">
+                        <select name="priority"
+                                    className="form-control"
+                                    value={this.state.priority}
+                                    onChange={this.handleInputChange}>
+                                    {optionItems}
+                        </select>                
 
-                                <p className="card-text"> </p>
+                        <p className="card-text"> </p>
 
-                                <div className="card" >
-                                   <div className="card">
-                                    <button className="btn btn-primary">{this.state.valores.key}</button>
-                                    </div>
-                                    <div className="card">
-                                    <button className="btn btn-primary">{this.state.valores.name}</button>
-                                    </div>
-                                    <div className="card">
-                                    <button className="btn btn-primary">{this.state.valores.unit}</button>
-                                    </div>
-                                </div>
-                             </div>
-                           </div>
+                        <div className="card" >
+                            <div className="card">
+                            <button className="btn btn-primary">{this.state.valores.key}</button>
+                            </div>
+                            <div className="card">
+                            <button className="btn btn-primary">{this.state.valores.name}</button>
+                            </div>
+                            <div className="card">
+                            <button className="btn btn-primary">{this.state.valores.unit}</button>
+                            </div>
                         </div>
-
-                        <div className="card text-white bg-primary mb-12" >
-                            <form action="/" method="get" >
-                                <button className="btn btn-primary"type="submit">Volver</button>
-                            </form>                
                         </div>
+                    </div>
+                </div>
+
+                <div className="card text-white bg-primary mb-12" >
+                    <form action="/" method="get" >
+                        <button className="btn btn-primary"type="submit">Volver</button>
+                    </form>                
+                </div>
 
              </div>
         )

@@ -53,7 +53,6 @@ class BiceIndicadores extends Component{
             );
 
         return(
-
                 <div className="card text-center border-info">
                     <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
                         <ul className="navbar-nav">
@@ -102,8 +101,7 @@ class BiceIndicadores extends Component{
                     </form>                
                 </div>         
             </div>   
-    
-          );
+        );
     }
 
 }

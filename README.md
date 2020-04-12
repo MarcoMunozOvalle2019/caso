@@ -27,7 +27,7 @@ _______________________________________________________________
 
 Levanta cliente ReactJs (port:80):
 
-11. En visual studio code se abre otro terminal con tecla + del terminal ya abierto (ver terminales.jpg)
+11. En visual studio code se abre otro terminal con tecla + del terminal ya abierto (ver fig terminales.jpg adjunta en carpeta)
 
 12. cd caso-master
 

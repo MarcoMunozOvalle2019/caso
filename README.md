@@ -1,4 +1,4 @@
-# caso BICE instrucciones:
+# caso BICE NodeJS-React, instrucciones:
 
 1. Presionar boton verde Clone or download
 
